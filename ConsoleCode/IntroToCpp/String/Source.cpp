@@ -26,8 +26,8 @@ int main()
 	std::cout << cFullName;
 
 	// std::string and Copying
-	string firstName = "Terry";
-	string lastName = "Nguyen";
+	string firstName = "Jonathan";
+	string lastName = "Arzate";
 
 	string firstNameCopy = firstName;
 
