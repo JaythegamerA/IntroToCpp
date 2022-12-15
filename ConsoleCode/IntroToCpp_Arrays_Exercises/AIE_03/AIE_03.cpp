@@ -1,5 +1,3 @@
-
-
 #include <iostream>
 #include <string>
 
@@ -15,11 +13,11 @@ int main(int argc, char** argv)
 	// The numbers in the array are assumed to be sorted
 	// search for the values 9, 1, 15, 0
 
-	TestResult( BinarySearch(arr1, NUM_ITEMS, 9),  &arr1[4]   );
-	TestResult( BinarySearch(arr1, NUM_ITEMS, 1),  &arr1[0]   );
-	TestResult( BinarySearch(arr1, NUM_ITEMS, 15), &arr1[7]   );
-	TestResult( BinarySearch(arr1, NUM_ITEMS, 0),  nullptr    );
-	TestResult( BinarySearch(arr1, NUM_ITEMS, 16), nullptr    );
+	TestResult(BinarySearch(arr1, NUM_ITEMS, 9), &arr1[4]);
+	TestResult(BinarySearch(arr1, NUM_ITEMS, 1), &arr1[0]);
+	TestResult(BinarySearch(arr1, NUM_ITEMS, 15), &arr1[7]);
+	TestResult(BinarySearch(arr1, NUM_ITEMS, 0), nullptr);
+	TestResult(BinarySearch(arr1, NUM_ITEMS, 16), nullptr);
 
 
 	return 0;
@@ -47,6 +45,25 @@ const int* BinarySearch(const int* arr, int count, int searchVal)
 	// This method should:
 	//	- Return: nullptr if the value is not found
 	//  - Return: pointer to the found value in the array
-	
+
+	int l = 0;
+	int r = count - 1;
+	while (l <= r)
+	{
+		int m = (l + r) / 2;
+		if (arr[m] == searchVal)
+		{
+			return &arr[m];
+		}
+		if (arr[m] < searchVal)
+		{
+			l = m + 1;
+		}
+		if (arr[m] > searchVal)
+		{
+			r = m - 1;
+		}
+	}
+
 	return nullptr;
 }
