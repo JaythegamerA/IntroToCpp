@@ -67,3 +67,4 @@ const int* BinarySearch(const int* arr, int count, int searchVal)
 	}
 
 	return nullptr;
+}

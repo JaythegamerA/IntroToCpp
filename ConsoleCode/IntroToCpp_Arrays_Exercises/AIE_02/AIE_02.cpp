@@ -66,3 +66,4 @@ int CountOccurrencesOfValue(const int* arr, int count, int search)
 		}
 	}
 	return occurrences;
+}
