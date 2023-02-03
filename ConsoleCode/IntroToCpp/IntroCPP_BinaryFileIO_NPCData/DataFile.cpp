@@ -87,37 +87,37 @@ void DataFile::Load(string filename, int index)
 		infile.read((char*)&tempNameSize, sizeof(int));
 		infile.read((char*)&tempAgeSize, sizeof(int));
 
-		// Get where we are in the file and set size to that
+		// Go to where we are in the file and set size to that
 		size = infile.tellg();
 
-		// Add image, name, and age sizes to the size variable
+		// Adds image, name, and age sizes to the size variable
 		size += sizeof(Color) * tempWidth * tempHeight;
 		size += tempNameSize + tempAgeSize;
 
-		// Shift the file location over to where the size is
+		// Move the file location over to where the size is
 		infile.seekg(size);
 	}
 
 	std::cout << size << std::endl;
 
 	infile.seekg(size, std::ios::beg);
-	infile.read((char*)&width, sizeof(int)); // FIXED
-	infile.read((char*)&height, sizeof(int)); // FIXED
+	infile.read((char*)&width, sizeof(int)); // Fixed
+	infile.read((char*)&height, sizeof(int)); // Fixed
 
 	imageSize = sizeof(Color) * width * height;
 
-	infile.read((char*)&nameSize, sizeof(int)); // FIXED
-	infile.read((char*)&ageSize, sizeof(int)); // FIXED
+	infile.read((char*)&nameSize, sizeof(int)); // Fixed
+	infile.read((char*)&ageSize, sizeof(int)); // Fixed
 
 	char* imgdata = new char[imageSize];
-	infile.read(imgdata, imageSize); // VARIABLE
+	infile.read(imgdata, imageSize); // Variable
 
 	Image img = LoadImageEx((Color*)imgdata, width, height);
 	char* name = new char[nameSize + 1]; // Add one to the nameSize for the actual array size to make room for the null terminator
 	int age = 0;
 
-	infile.read((char*)name, nameSize); // VARIABLE
-	infile.read((char*)&age, ageSize); // VARIABLE
+	infile.read((char*)name, nameSize); // Variable
+	infile.read((char*)&age, ageSize); // Variable
 
 	std::cout << infile.tellg() << std::endl;
 
